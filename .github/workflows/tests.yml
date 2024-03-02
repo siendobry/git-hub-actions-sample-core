@@ -24,27 +24,27 @@ jobs:
         run: npm run test
         working-directory: frontend
 
-      backend:
-        runs-on: ubuntu-latest
+    backend:
+      runs-on: ubuntu-latest
 
-          steps:
-              - name: Checkout repository
-                uses: actions/checkout@v2
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
 
-                - name: Set up JDK 17
-                  uses: actions/setup-java@v2
-                  with:
-                    java-version: '17'
+              - name: Set up JDK 17
+                uses: actions/setup-java@v2
+                with:
+                  java-version: '17'
 
-                - name: Install Gradle
-                  run: |
-                    sudo apt-get update
-                    sudo apt-get install -y gradle
+              - name: Install Gradle
+                run: |
+                  sudo apt-get update
+                  sudo apt-get install -y gradle
 
-                - name: Run tests
-                  run: |
-                    cd backend/src/test/java/pl/agh/slonik/githubactiosns/sample/core
-                    gradle test
+              - name: Run tests
+                run: |
+                  cd backend/src/test/java/pl/agh/slonik/githubactiosns/sample/core
+                  gradle test
 
 
 
