@@ -16,11 +16,11 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Change directory
         run: cd frontend
+
+      - name: Install dependencies
+        run: npm install
 
       - name: Run tests
         run: npm run test
