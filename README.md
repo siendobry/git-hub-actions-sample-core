@@ -43,16 +43,16 @@ Jeden workflow może składać się z **jednego lub więcej jobów** podzielowny
     Po pushu naszych zmian w zakładce actions powinniśmy zauważyć uruchomienie naszego workflow:
 
 
-![img.png](img.png)
+![img.png](readme_images/img.png)
     Wykonania work flow możemy filtrować po eventach je trigerujących,statusach,branchach itd...
 
 Po kliknięciu w wykonanie konkretnego workflow możemy zobaczyć jego status i szczegóły wykonania:
-![img_1.png](img_1.png)
+![img_1.png](readme_images/img_1.png)
 w prawym górnym rogu istnieje możliwość ponownego uruchomienia wszystkich jobów bez konieczności kolejnego występienia eventu.
 Jak widzimy testy dla backendu zakończyły się niepowodzniem. Aby sprawdzić co poszło nie tek klikamy joba zakończonego niepowodzeniem co pozwala nam zobaczyć wszystkie stepy:
-![img_2.png](img_2.png)
+![img_2.png](readme_images/img_2.png)
 Klikamy czerwony krok i po rozwinięcu wizimy że:
-![img_3.png](img_3.png)
+![img_3.png](readme_images/img_3.png)
 Możemy to szybko naprawić przechodząć do klasy `pl/agh/slonik/githubactiosns/sample/core/model/Student.java` i dodając wszystki pola do funkcji to string usuwajć `    @ToString.Exclude
 `
 
@@ -62,23 +62,23 @@ Po tej zmianie wszyskie testy powinny być zielone :)
 
     Podczas pracy nad projektem z większą liczbą osób dojdziemy prawdopodobnie do wniosku, że niekoniecznie chcemy pozwolić na mergowanie każdego commita do głównego brancha bez PR.
     Możemy się przed tym i wieloma innymi rzeczami zabezpieczyć zmieniając politykę repozytorium, aby to zrobić przechodzimy do zakładki settings:
-    ![img_4.png](img_4.png)
+    ![img_4.png](readme_images/img_4.png)
     Warto zapoznać się z tym co możemy tu wyklikać, ale narazie przejdziemy do zakładki:
-![img_5.png](img_5.png)
+![img_5.png](readme_images/img_5.png)
     i ustawimy blokadę na pushe i merge do mastera (zdezaktualizuje to nasze wcześniej skonfigurowane github actions reagujące na push do mastera ale tym się nie przejmujemy :) )
     
     Klikamy create new rule set:
-![img_6.png](img_6.png)
+![img_6.png](readme_images/img_6.png)
     a następnie branch rule set, ustawiamy nazwę rule set na master-protection a status na active:
-[img_7.png](img_7.png)
+[img_7.png](readme_images/img_7.png)
 pomijamy część odpowiedzialną za wyjątki:
-![img_8.png](img_8.png)
+![img_8.png](readme_images/img_8.png)
 i wybieramy branch dla którego będzie działać nasza polityka:
 
-![img_9.png](img_9.png)
+![img_9.png](readme_images/img_9.png)
 
 A następnie regułę:
-![img_10.png](img_10.png)
+![img_10.png](readme_images/img_10.png)
 
 Po wybraniu ograniczeń klikamy create.
 
@@ -92,6 +92,21 @@ https://docs.github.com/en/pages/quickstart
 
 Najpierw dodajmy `"homepage": "https://<github-username>.github.io/<repo-name>/",` do naszego pliku package.json w katalogu frontend bęzie to link gdzie dostępna będzie nasza strona.
 <github-username> i  <repo-name> podmieniamy na nazwę użytkownika i repozytorium.
+
+Następnie musimy wygenerować token który umożliwi buildowi stworzenie brancha z zdeployowaną stroną i dodać ten token jako sekret naszego repozytorium.
+Wchodzimy na tą stronę: https://github.com/settings/tokens
+i genreujemy token z następującymi uprawnieniami:
+![img_11.png](readme_images/img_11.png)
+
+Tak wygenerowany token kopiujemy i przechodzimy do ustawień repozytorium a następnie do:
+![img_12.png](readme_images/img_12.png)
+Security->actions->secrets & variables
+![img_13.png](readme_images/img_13.png)
+Tworzymy nowy sekret który nazwiemy `TOKEN` i zapisujemy tam nasz wygenerowany token i do katalogu workflows dodajemy plik `deploy.yml`
+teraz po wykonaniu merga do mastera zostanie zdeployowany frontend na link podany w pliku `package.json`
+
+![img_14.png](readme_images/img_14.png)
+
 
 
 
