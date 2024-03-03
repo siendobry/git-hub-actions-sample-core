@@ -10,10 +10,9 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class Student {
-    @ToString.Include
     private String name;
-    @ToString.Include
     private String Surname;
-    @ToString.Include
+    //  remove exclude to fix tests
+    @ToString.Exclude
     private String id;
 }

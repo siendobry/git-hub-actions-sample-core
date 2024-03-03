@@ -42,7 +42,7 @@ public class StudentControllerTest {
 
         // assert
         students.forEach( student -> {
-            assertTrue("contains name of " + student.toString(),result.contains(student.getName()));
+            assertTrue("Test if contains name of " + student.toString(),result.contains(student.getName()));
         });
     }
 }

@@ -9,7 +9,7 @@ public class StudentTest {
     @Test
     public void toStringTest(){
 
-//        prepare
+//      prepare
         String name = "kuba";
         String surname = "nowakowski";
         String id = "id2";
@@ -21,10 +21,8 @@ public class StudentTest {
 
 //      assert
 
-        Assert.isTrue(results.contains(name),"name");
-        Assert.isTrue(results.contains(surname),"surname");
-        Assert.isTrue(results.contains(id),"id");
-
-
+        Assert.isTrue(results.contains(name),"Test if to string contains name");
+        Assert.isTrue(results.contains(surname),"Test if to string contains surname");
+        Assert.isTrue(results.contains(id),"Test if to string contains id");
     }
 }
