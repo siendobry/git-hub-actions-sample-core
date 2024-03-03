@@ -1,0 +1,34 @@
+name: deploy
+
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: frontend
+
+      - name: Run tests
+        run: npm run test
+        working-directory: frontend
+
+      - name: install gh pages comand
+        run: npm install --save-dev gh-pages
+        working-directory: frontend
+
+      - name: deploy !!!
+        run: gh-pages -d build
+        working-directory: frontend
