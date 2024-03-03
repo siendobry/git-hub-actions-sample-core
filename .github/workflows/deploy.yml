@@ -26,7 +26,7 @@ jobs:
         working-directory: frontend
 
       - name: install gh pages comand
-        run: npm install --save-dev gh-pages
+        run: npm install gh-pages
         working-directory: frontend
 
       - name: deploy !!!
